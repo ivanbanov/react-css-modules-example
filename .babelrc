@@ -5,7 +5,9 @@
   "plugins": [
     "react-hot-loader/babel",
     ["react-css-modules", {
-      "generateScopedName": "[hash:base64:3]"
+      "generateScopedName": "[hash:base64:3]",
+      "exclude": "/node_modules/",
+      "webpackHotModuleReloading": true
     }]
   ]
 }

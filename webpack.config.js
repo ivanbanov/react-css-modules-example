@@ -7,19 +7,19 @@ module.exports = {
   entry: {
     app: [
       'react-hot-loader/patch',
-      'webpack-dev-server/client?http://localhost:3333',
+      'webpack-dev-server/client?http://localhost:3000',
       'webpack/hot/only-dev-server',
       './src/index.js'
     ]
   },
   output: {
     publicPath: '/',
-    filename: './dist/[name].js'
+    filename: 'dist/[name].js'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({ template: './index.html' }),
-    new ExtractTextPlugin('./dist/styles.css')
+    new ExtractTextPlugin('dist/styles.css')
   ],
   module: {
     rules: [
@@ -29,17 +29,29 @@ module.exports = {
         include: path.join(__dirname, 'src'),
       },
       {
-        test: /\.css$/,
+        test: /semantic-ui-css.*\.css/,
+        use: [ 'style-loader', 'css-loader' ],
+      },
+      {
+        test: /src.*\.css/,
         use: [
           { loader: 'style-loader' },
           {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: '[hash:base64:3]',
-            }
-          }
+              url: false,
+              localIdentName: '[hash:base64:3]'
+            },
+          },
         ]
+      },
+      {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000
+        }
       }
     ]
   }

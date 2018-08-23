@@ -1,6 +1,9 @@
 import React from 'react';
-import styles from './styles.css';
+import { Button } from 'semantic-ui-react';
 
-const App = props => (<div styleName="foo bar">test</div>);
+import 'semantic-ui-css/semantic.min.css';
+import './styles.css';
+
+const App = props => <Button styleName="button">click me!</Button>;
 
 export default App;
