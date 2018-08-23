@@ -1,0 +1,11 @@
+{
+  "presets": [
+    "react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    ["react-css-modules", {
+      "generateScopedName": "[hash:base64:3]"
+    }]
+  ]
+}
